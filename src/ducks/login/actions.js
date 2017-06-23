@@ -10,7 +10,21 @@ const updateInput = (key, type) => ({
 });
 
 
+const validationUpdate = (key, type) => ({
+    type: types.VALDATION_UPDATE,
+    payload: { key, type }
+});
+
+
+const loggingIn = (key, type) => ({
+  type: types.LOGGING_IN,
+  payload: { key, type }
+});
+
+
 export default {
   startLogin,
-  updateInput
+  updateInput,
+  validationUpdate,
+  loggingIn
 };

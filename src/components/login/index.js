@@ -6,11 +6,15 @@ class Login extends React.Component {
 
   click(e) {
     e.preventDefault();
-    this.props.validate();
+    this.props.submit();
+  }
+
+  update(event, value) {
+    this.props.updateInput(event.target.value, value)
+    this.props.validate()
   }
 
   render() {
-      console.log(this.props);
       return (
           <div className='loginContainer'>
             <div className='loginHeader'>
@@ -20,15 +24,17 @@ class Login extends React.Component {
               <div className="loginInputs">
                 <div className="form-field">
                   <label><img src='images/user.png'/></label>
-                  <input id="login-username" type="text" className="form-input" placeholder="Username" onChange={(event) => this.props.updateInput(event.target.value, 'username')} value={this.props.login.loginInputsReducer.username} required />
+                  <input id="login-username" type="text" className="form-input" placeholder="Username" onChange={(event) => this.update(event, 'username')} value={this.props.login.loginInputsReducer.username} required />
                 </div>
                 <div className="form-field">
                     <label><img src='images/password.png'/></label>
-                  <input id="login-password" type="password" className="form-input" placeholder="Password" onChange={(event) => this.props.updateInput(event.target.value, 'password')} value={this.props.login.loginInputsReducer.password} required />
+                  <input id="login-password" type="password" className="form-input" placeholder="Password" onChange={(event) => this.update(event, 'password')} value={this.props.login.loginInputsReducer.password} required />
                 </div>
-                <div style={{marginBottom: 0}} className="form-field">
-                  <input  onClick={this.click.bind(this)} type="submit" value="Log in"/>
-                </div>
+                { this.props.login.loginInputsReducer.valid == true ? (
+                  <div style={{marginBottom: 0}} className="form-field">
+                    <input  onClick={this.click.bind(this)} type="submit" value="Log in"/>
+                  </div>
+                ) : null }
               </div>
             </form>
           </div>
@@ -42,7 +48,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     updateInput : (event, type) => dispatch(operations.updateInput(event, type)),
-    validate  : () => dispatch(operations.validate())
+    validate  : () => dispatch(operations.validate()),
+    submit : () => dispatch(operations.submit())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
