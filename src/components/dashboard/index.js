@@ -4,7 +4,10 @@ import { connect } from 'react-redux';
 class Dashboard extends React.Component {
   render() {
       return (
-          <h2>Hello</h2>
+          <div>
+            <h2>Hello 2222222222</h2>
+            <p>te111sssst</p>
+          </div>
       );
   }
 };

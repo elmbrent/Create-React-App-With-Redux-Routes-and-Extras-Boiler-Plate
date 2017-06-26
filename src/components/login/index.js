@@ -14,6 +14,10 @@ class Login extends React.Component {
     this.props.validate()
   }
 
+  componentDidMount() {
+      document.body.className = 'login'; //Here gray-by is the bg color which I have set
+  }
+
   render() {
       return (
           <div className='loginContainer'>

@@ -3,7 +3,7 @@ import types from './types';
 
 
 const loginReducer = (state = {
-   loggedIn : false,
+   loggedIn : true,
    authKey : false
 }, action) => {
     switch (action.type) {
