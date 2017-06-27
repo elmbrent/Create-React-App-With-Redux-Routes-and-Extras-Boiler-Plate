@@ -3,7 +3,7 @@ import types from './types';
 
 
 const loginReducer = (state = {
-   loggedIn : true,
+   loggedIn : false,
    authKey : false
 }, action) => {
     switch (action.type) {
@@ -13,11 +13,16 @@ const loginReducer = (state = {
               'loggedIn' : action.payload.key,
               'authKey' : action.payload.type,
           }
+          case types.LOGGING_OUT:
+            return {
+              ...state,
+                'loggedIn' : false,
+                'authKey' :  false,
+            }
         default:
           return state;
     }
 };
-
 
 const loginFormInputsReducer = (
   state = {
@@ -35,11 +40,17 @@ const loginFormInputsReducer = (
             return {
               ...state, 'valid' : action.payload.key
             }
+          case types.LOGGING_OUT:
+              return {
+                ...state,
+                  'username' : '',
+                  'password' : '',
+                  'valid' :  false,
+              }
         default:
             return state;
     }
 }
-
 
 const reducer = combineReducers({
   'loginReducer': loginReducer,

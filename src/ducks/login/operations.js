@@ -23,5 +23,6 @@ const submit = () => (dispatch, getState) => {
 export default {
   validate : validate,
   updateInput: actions.updateInput,
+  logOut: actions.logOut,
   submit : submit
 };

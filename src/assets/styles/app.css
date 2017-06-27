@@ -44,6 +44,7 @@ ul {
 nav.closed {
   width: 70px;
 }
+
 nav .topBar {
     position: relative;
     height: 70px;
@@ -65,6 +66,7 @@ nav ul a {
     -moz-transition:200ms ease;
     -o-transition:200ms ease;
     transition:200ms ease;
+    text-decoration: none;
 }
 
 nav ul a:hover, nav ul a.active {
@@ -91,7 +93,7 @@ main {
     background: white;
 }
 main header {
-    height: 87px;
+    height: 86px;
     margin: -25px -25px 25px -25px;
     padding: 0 25px;
     line-height: 66px;

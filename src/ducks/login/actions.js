@@ -9,6 +9,10 @@ const updateInput = (key, type) => ({
     payload: { key, type }
 });
 
+const logOut = (key, type) => ({
+    type: types.LOGGING_OUT,
+    payload: { key, type }
+});
 
 const validationUpdate = (key, type) => ({
     type: types.VALDATION_UPDATE,
@@ -23,6 +27,7 @@ const loggingIn = (key, type) => ({
 
 
 export default {
+  logOut,
   startLogin,
   updateInput,
   validationUpdate,
